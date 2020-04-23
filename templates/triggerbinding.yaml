@@ -1,5 +1,5 @@
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: triggers.tekton.dev/v1alpha1
 kind: TriggerBinding
 metadata:
  name: {{ include "ms-demo-tekton.fullname" . }}
@@ -15,5 +15,11 @@ spec:
       value: "git@github.com:$(body.repository.full_name)"
     - name: registry
       value: {{ .Values.registry.url }}
+    - name: argoCdUrl
+      value: {{ .Values.argocd.url }}
+    - name: ArgoCdSecret
+      value: {{ include "ms-demo-tekton.fullname" . }}-argocd-secret
+    - name: appName
+      value: {{ .Values.argocd.appname }} 
 ---
 

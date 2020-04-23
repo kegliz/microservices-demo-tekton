@@ -1,4 +1,4 @@
-apiVersion: tekton.dev/v1alpha1
+apiVersion: triggers.tekton.dev/v1alpha1
 kind: TriggerTemplate
 metadata:
   name: {{ include "ms-demo-tekton.fullname" . }}
@@ -8,7 +8,6 @@ spec:
   params:
     - name: gitrevision
       description: The git revision
-      default: {{ .Values.tekton.gitRevision }}
     - name: gitrepositoryurl
       description: The git repository url
     - name: namespace
@@ -16,11 +15,11 @@ spec:
     - name: registry
       description: The URL/folder of the repoitory to upload the image to
     - name: argoCdUrl
-      default: {{ .Values.argocd.url }}
+      description: Argo CD server to update the tag
     - name: ArgoCdSecret
-      default: {{ include "ms-demo-tekton.fullname" . }}-argocd-secret
+      description: Secret that holds the credentials for Argo CD
     - name: appName
-      default: {{ .Values.argocd.appname }} 
+      description: Name of the application to update in Argo CD
   resourcetemplates:
     - apiVersion: tekton.dev/v1alpha1
       kind: PipelineRun
