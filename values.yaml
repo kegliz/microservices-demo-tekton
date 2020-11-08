@@ -3,12 +3,11 @@
 # Declare variables to be passed into your templates.
 
 certificate:
-  issuer: "letsencrypt-prod-istio"
+  issuer: "letsencrypt-prod"
   kind: "ClusterIssuer"
   namespace: "istio-system"
-  commonName: "tekton.your-domain.tld"
   dnsNames:
-  - "tekton.your-domain.tld"
+  - "demo-tekton.kegnet.dev"
 
 istio:
   port: 443
@@ -33,4 +32,4 @@ argocd:
   username: ""
   password: ""
   appname: "ms-demo"
-  url: argocd.your-domain.tld
+  url: argocd.kegnet.dev

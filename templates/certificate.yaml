@@ -1,5 +1,5 @@
 ---
-apiVersion: cert-manager.io/v1alpha2
+apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: {{ include "ms-demo-tekton.fullname" . }}
@@ -11,7 +11,6 @@ spec:
   issuerRef:
     name: {{ .Values.certificate.issuer }}
     kind: {{ .Values.certificate.kind }}
-  commonName: {{ .Values.certificate.commonName }}
   dnsNames:
   {{- toYaml .Values.certificate.dnsNames | nindent 2 }}
 ---
