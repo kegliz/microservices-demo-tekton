@@ -1,5 +1,5 @@
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
   name: {{ include "ms-demo-tekton.fullname" . }}
@@ -330,4 +330,3 @@ spec:
       - name: AppName
         value: $(params.appName)
     timeout: 20m0s
-

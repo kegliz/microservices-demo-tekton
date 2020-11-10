@@ -12,7 +12,7 @@ spec:
   servers:
   - port:
       number: {{ .Values.istio.port }}
-      name: https
+      name: https-demo
       protocol: HTTPS
     tls:
       mode: SIMPLE
@@ -28,7 +28,7 @@ metadata:
     {{- include "ms-demo-tekton.labels" . | nindent 4 }}
 spec:
   hosts:
-    {{- toYaml .Values.certificate.dnsNames | nindent 4 }} 
+    {{- toYaml .Values.certificate.dnsNames | nindent 4 }}
   gateways:
   - {{ include "ms-demo-tekton.fullname" . }}
   http:
