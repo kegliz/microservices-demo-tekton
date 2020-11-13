@@ -13,13 +13,12 @@ spec:
       value: {{ .Values.tekton.deployNamespace }}
     - name: gitrepositoryurl
       value: "git@github.com:$(body.repository.full_name)"
-    - name: registry
-      value: {{ .Values.registry.url }}
+    - name: imageBaseUrl
+      value: {{ .Values.registry.imageBaseUrl }}
     - name: argoCdUrl
       value: {{ .Values.argocd.url }}
     - name: ArgoCdSecret
       value: {{ include "ms-demo-tekton.fullname" . }}-argocd-secret
     - name: appName
-      value: {{ .Values.argocd.appname }} 
+      value: {{ .Values.argocd.appname }}
 ---
-

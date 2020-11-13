@@ -12,7 +12,7 @@ spec:
       description: The git repository url
     - name: namespace
       description: The namespace to create the resources
-    - name: registry
+    - name: imageBaseUrl
       description: The URL/folder of the repoitory to upload the image to
     - name: argoCdUrl
       description: Argo CD server to update the tag
@@ -44,67 +44,67 @@ spec:
               type: image
               params:
                 - name: url
-                  value: $(params.registry)/adservice:$(params.gitrevision)
+                  value: $(params.imageBaseUrl)/adservice:$(params.gitrevision)
           - name: cartService-image
             resourceSpec:
               type: image
               params:
                 - name: url
-                  value: $(params.registry)/cartservice:$(params.gitrevision)
+                  value: $(params.imageBaseUrl)/cartservice:$(params.gitrevision)
           - name: checkoutService-image
             resourceSpec:
               type: image
               params:
                 - name: url
-                  value: $(params.registry)/checkoutservice:$(params.gitrevision)
+                  value: $(params.imageBaseUrl)/checkoutservice:$(params.gitrevision)
           - name: currencyService-image
             resourceSpec:
               type: image
               params:
                 - name: url
-                  value: $(params.registry)/currencyservice:$(params.gitrevision)
+                  value: $(params.imageBaseUrl)/currencyservice:$(params.gitrevision)
           - name: emailService-image
             resourceSpec:
               type: image
               params:
                 - name: url
-                  value: $(params.registry)/emailservice:$(params.gitrevision)
+                  value: $(params.imageBaseUrl)/emailservice:$(params.gitrevision)
           - name: frontendService-image
             resourceSpec:
               type: image
               params:
                 - name: url
-                  value: $(params.registry)/frontend:$(params.gitrevision)
+                  value: $(params.imageBaseUrl)/frontend:$(params.gitrevision)
           - name: loadGenerator-image
             resourceSpec:
               type: image
               params:
                 - name: url
-                  value: $(params.registry)/loadgenerator:$(params.gitrevision)
+                  value: $(params.imageBaseUrl)/loadgenerator:$(params.gitrevision)
           - name: paymentService-image
             resourceSpec:
               type: image
               params:
                 - name: url
-                  value: $(params.registry)/paymentservice:$(params.gitrevision)
+                  value: $(params.imageBaseUrl)/paymentservice:$(params.gitrevision)
           - name: productCatalogService-image
             resourceSpec:
               type: image
               params:
                 - name: url
-                  value: $(params.registry)/productcatalogservice:$(params.gitrevision)
+                  value: $(params.imageBaseUrl)/productcatalogservice:$(params.gitrevision)
           - name: recommendationService-image
             resourceSpec:
               type: image
               params:
                 - name: url
-                  value: $(params.registry)/recommendationservice:$(params.gitrevision)
+                  value: $(params.imageBaseUrl)/recommendationservice:$(params.gitrevision)
           - name: shippingService-image
             resourceSpec:
               type: image
               params:
                 - name: url
-                  value: $(params.registry)/shippingservice:$(params.gitrevision)
+                  value: $(params.imageBaseUrl)/shippingservice:$(params.gitrevision)
         params:
           - name: adServiceDockerfile
             value: ./src/adservice/Dockerfile
@@ -159,4 +159,3 @@ spec:
           - name: appName
             value: $(params.appName)
 ---
-
