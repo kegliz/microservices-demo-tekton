@@ -9,6 +9,6 @@ spec:
   serviceAccountName: {{ include "ms-demo-tekton.fullname" . }}-tekton-triggers-admin
   triggers:
     - bindings:
-      - name: {{ include "ms-demo-tekton.fullname" . }}
+      - ref: {{ include "ms-demo-tekton.fullname" . }}
       template:
         name: {{ include "ms-demo-tekton.fullname" . }}
