@@ -25,7 +25,7 @@ spec:
       kind: PipelineRun
       metadata:
         name: {{ include "ms-demo-tekton.fullname" . }}-$(uid)
-        namespace: $(params.namespace)
+        namespace: $(tt.params.namespace)
       spec:
         serviceAccountName: {{ include "ms-demo-tekton.fullname" . }}-tekton-triggers-admin
         pipelineRef:
@@ -36,75 +36,75 @@ spec:
               type: git
               params:
               - name: revision
-                value: $(params.gitrevision)
+                value: $(tt.params.gitrevision)
               - name: url
-                value: $(params.gitrepositoryurl)
+                value: $(tt.params.gitrepositoryurl)
           - name: adService-image
             resourceSpec:
               type: image
               params:
                 - name: url
-                  value: $(params.imageBaseUrl)/adservice:$(params.gitrevision)
+                  value: $(tt.params.imageBaseUrl)/adservice:$(tt.params.gitrevision)
           - name: cartService-image
             resourceSpec:
               type: image
               params:
                 - name: url
-                  value: $(params.imageBaseUrl)/cartservice:$(params.gitrevision)
+                  value: $(tt.params.imageBaseUrl)/cartservice:$(tt.params.gitrevision)
           - name: checkoutService-image
             resourceSpec:
               type: image
               params:
                 - name: url
-                  value: $(params.imageBaseUrl)/checkoutservice:$(params.gitrevision)
+                  value: $(tt.params.imageBaseUrl)/checkoutservice:$(tt.params.gitrevision)
           - name: currencyService-image
             resourceSpec:
               type: image
               params:
                 - name: url
-                  value: $(params.imageBaseUrl)/currencyservice:$(params.gitrevision)
+                  value: $(tt.params.imageBaseUrl)/currencyservice:$(tt.params.gitrevision)
           - name: emailService-image
             resourceSpec:
               type: image
               params:
                 - name: url
-                  value: $(params.imageBaseUrl)/emailservice:$(params.gitrevision)
+                  value: $(tt.params.imageBaseUrl)/emailservice:$(tt.params.gitrevision)
           - name: frontendService-image
             resourceSpec:
               type: image
               params:
                 - name: url
-                  value: $(params.imageBaseUrl)/frontend:$(params.gitrevision)
+                  value: $(tt.params.imageBaseUrl)/frontend:$(tt.params.gitrevision)
           - name: loadGenerator-image
             resourceSpec:
               type: image
               params:
                 - name: url
-                  value: $(params.imageBaseUrl)/loadgenerator:$(params.gitrevision)
+                  value: $(tt.params.imageBaseUrl)/loadgenerator:$(tt.params.gitrevision)
           - name: paymentService-image
             resourceSpec:
               type: image
               params:
                 - name: url
-                  value: $(params.imageBaseUrl)/paymentservice:$(params.gitrevision)
+                  value: $(tt.params.imageBaseUrl)/paymentservice:$(tt.params.gitrevision)
           - name: productCatalogService-image
             resourceSpec:
               type: image
               params:
                 - name: url
-                  value: $(params.imageBaseUrl)/productcatalogservice:$(params.gitrevision)
+                  value: $(tt.params.imageBaseUrl)/productcatalogservice:$(tt.params.gitrevision)
           - name: recommendationService-image
             resourceSpec:
               type: image
               params:
                 - name: url
-                  value: $(params.imageBaseUrl)/recommendationservice:$(params.gitrevision)
+                  value: $(tt.params.imageBaseUrl)/recommendationservice:$(tt.params.gitrevision)
           - name: shippingService-image
             resourceSpec:
               type: image
               params:
                 - name: url
-                  value: $(params.imageBaseUrl)/shippingservice:$(params.gitrevision)
+                  value: $(tt.params.imageBaseUrl)/shippingservice:$(tt.params.gitrevision)
         params:
           - name: adServiceDockerfile
             value: ./src/adservice/Dockerfile
@@ -151,11 +151,11 @@ spec:
           - name: shippingServiceContext
             value: ./src/shippingservice
           - name: argoCdUrl
-            value: $(params.argoCdUrl)
+            value: $(tt.params.argoCdUrl)
           - name: ArgoCdSecret
-            value: $(params.ArgoCdSecret)
+            value: $(tt.params.ArgoCdSecret)
           - name: commitId
-            value: $(params.gitrevision)
+            value: $(tt.params.gitrevision)
           - name: appName
-            value: $(params.appName)
+            value: $(tt.params.appName)
 ---
